@@ -226,11 +226,41 @@ export default function Header() {
             </Menu>
           </Box>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Right Side */}
           {isMobile && (
-            <IconButton edge="end" onClick={handleDrawerToggle}>
-              <MenuIcon className="text-blue-700" />
-            </IconButton>
+            <Box className="flex items-center space-x-2">
+              <IconButton
+                onClick={handleUserMenuOpen}
+                className="text-blue-700"
+              >
+                <AccountCircle fontSize="large" />
+              </IconButton>
+              <IconButton edge="end" onClick={handleDrawerToggle}>
+                <MenuIcon className="text-blue-700" />
+              </IconButton>
+
+              {/* Mobile User Menu */}
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleUserMenuClose}
+              >
+                <MenuItem
+                  component={Link}
+                  href="/register"
+                  onClick={handleUserMenuClose}
+                >
+                  Sign In
+                </MenuItem>
+                <MenuItem
+                  component={Link}
+                  href="/login"
+                  onClick={handleUserMenuClose}
+                >
+                  Sign Up
+                </MenuItem>
+              </Menu>
+            </Box>
           )}
         </Toolbar>
 
