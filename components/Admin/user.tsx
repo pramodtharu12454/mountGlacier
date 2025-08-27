@@ -18,6 +18,7 @@ import {
   DialogContentText,
   DialogTitle,
   Button,
+  TextField,
 } from "@mui/material";
 import { MoreVertical } from "lucide-react";
 
@@ -62,6 +63,7 @@ export default function UserManagement() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const [search, setSearch] = useState("");
 
   const handleMenuOpen = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -87,39 +89,68 @@ export default function UserManagement() {
     setOpenDialog(false);
   };
 
+  const filteredUsers = users.filter(
+    (u) =>
+      u.username.toLowerCase().includes(search.toLowerCase()) ||
+      u.email.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">User Management</h2>
-      <TableContainer component={Paper} className="rounded-2xl shadow-md">
-        <Table>
-          <TableHead className="bg-gray-100">
-            <TableRow>
-              <TableCell>Username</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Mobile</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Last Login</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.map((user) => (
-              <TableRow key={user.id} hover>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.mobile}</TableCell>
-                <TableCell>{user.address}</TableCell>
-                <TableCell>{user.lastLogin}</TableCell>
-                <TableCell align="right">
-                  <IconButton onClick={(e) => handleMenuOpen(e, user)}>
-                    <MoreVertical className="w-5 h-5" />
-                  </IconButton>
-                </TableCell>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+        <h2 className="text-2xl font-semibold">User Management</h2>
+        <TextField
+          size="small"
+          placeholder="Search users..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      <div className="overflow-x-auto">
+        <TableContainer component={Paper} className="rounded-2xl shadow-md">
+          <Table>
+            <TableHead className="bg-gray-100">
+              <TableRow>
+                <TableCell>Username</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Mobile</TableCell>
+                <TableCell>Address</TableCell>
+                <TableCell>Last Login</TableCell>
+                <TableCell align="right">Actions</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {filteredUsers.length > 0 ? (
+                filteredUsers.map((user) => (
+                  <TableRow key={user.id} hover>
+                    <TableCell>{user.username}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell>{user.mobile}</TableCell>
+                    <TableCell>{user.address}</TableCell>
+                    <TableCell>{user.lastLogin}</TableCell>
+                    <TableCell align="right">
+                      <IconButton onClick={(e) => handleMenuOpen(e, user)}>
+                        <MoreVertical className="w-5 h-5" />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    align="center"
+                    className="text-gray-500"
+                  >
+                    No users found
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
 
       {/* Menu */}
       <Menu
@@ -127,7 +158,15 @@ export default function UserManagement() {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={handleDeleteClick}>Delete</MenuItem>
+        <MenuItem onClick={() => alert(`Edit ${selectedUser?.username}`)}>
+          Edit
+        </MenuItem>
+        <MenuItem onClick={() => alert(`Viewing ${selectedUser?.username}`)}>
+          View
+        </MenuItem>
+        <MenuItem onClick={handleDeleteClick} className="text-red-600">
+          Delete
+        </MenuItem>
       </Menu>
 
       {/* Confirmation Dialog */}

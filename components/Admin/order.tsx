@@ -22,6 +22,7 @@ import {
   FormControl,
   InputLabel,
   MenuItem as SelectItem,
+  TextField,
 } from "@mui/material";
 import { MoreVertical } from "lucide-react";
 
@@ -79,6 +80,8 @@ export default function OrdersManagement() {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [newStatus, setNewStatus] = useState("");
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState("All");
 
   const handleMenuOpen = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -107,45 +110,115 @@ export default function OrdersManagement() {
     setOpenDialog(false);
   };
 
+  // Filtering
+  const filteredOrders = orders.filter(
+    (o) =>
+      (o.name.toLowerCase().includes(search.toLowerCase()) ||
+        o.email.toLowerCase().includes(search.toLowerCase()) ||
+        o.destination.toLowerCase().includes(search.toLowerCase())) &&
+      (statusFilter === "All" || o.status === statusFilter)
+  );
+
+  // Badge style for status
+  const getStatusClass = (status: string) => {
+    switch (status) {
+      case "Pending":
+        return "bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs font-medium";
+      case "Confirmed":
+        return "bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium";
+      case "Completed":
+        return "bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-medium";
+      case "Cancelled":
+        return "bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium";
+      default:
+        return "bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium";
+    }
+  };
+
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Tour & Travel Orders</h2>
-      <TableContainer component={Paper} className="rounded-2xl shadow-md">
-        <Table>
-          <TableHead className="bg-gray-100">
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Destination</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>Travelers</TableCell>
-              <TableCell>Special Request</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {orders.map((order) => (
-              <TableRow key={order.id} hover>
-                <TableCell>{order.name}</TableCell>
-                <TableCell>{order.email}</TableCell>
-                <TableCell>{order.phone}</TableCell>
-                <TableCell>{order.destination}</TableCell>
-                <TableCell>{order.date}</TableCell>
-                <TableCell>{order.travelers}</TableCell>
-                <TableCell>{order.specialRequest}</TableCell>
-                <TableCell>{order.status}</TableCell>
-                <TableCell align="right">
-                  <IconButton onClick={(e) => handleMenuOpen(e, order)}>
-                    <MoreVertical className="w-5 h-5" />
-                  </IconButton>
-                </TableCell>
+      {/* Header with search + filter */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+        <h2 className="text-2xl font-semibold">Tour & Travel Orders</h2>
+        <div className="flex gap-3">
+          <TextField
+            size="small"
+            placeholder="Search orders..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <FormControl size="small">
+            <InputLabel>Status</InputLabel>
+            <Select
+              value={statusFilter}
+              label="Status"
+              onChange={(e) => setStatusFilter(e.target.value)}
+              sx={{ minWidth: 130 }}
+            >
+              <SelectItem value="All">All</SelectItem>
+              <SelectItem value="Pending">Pending</SelectItem>
+              <SelectItem value="Confirmed">Confirmed</SelectItem>
+              <SelectItem value="Completed">Completed</SelectItem>
+              <SelectItem value="Cancelled">Cancelled</SelectItem>
+            </Select>
+          </FormControl>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <TableContainer component={Paper} className="rounded-2xl shadow-md">
+          <Table>
+            <TableHead className="bg-gray-100">
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Phone</TableCell>
+                <TableCell>Destination</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Travelers</TableCell>
+                <TableCell>Special Request</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell align="right">Actions</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {filteredOrders.length > 0 ? (
+                filteredOrders.map((order) => (
+                  <TableRow key={order.id} hover>
+                    <TableCell>{order.name}</TableCell>
+                    <TableCell>{order.email}</TableCell>
+                    <TableCell>{order.phone}</TableCell>
+                    <TableCell>{order.destination}</TableCell>
+                    <TableCell>{order.date}</TableCell>
+                    <TableCell>{order.travelers}</TableCell>
+                    <TableCell>{order.specialRequest}</TableCell>
+                    <TableCell>
+                      <span className={getStatusClass(order.status)}>
+                        {order.status}
+                      </span>
+                    </TableCell>
+                    <TableCell align="right">
+                      <IconButton onClick={(e) => handleMenuOpen(e, order)}>
+                        <MoreVertical className="w-5 h-5" />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={9}
+                    align="center"
+                    className="text-gray-500"
+                  >
+                    No orders found
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
 
       {/* Menu */}
       <Menu

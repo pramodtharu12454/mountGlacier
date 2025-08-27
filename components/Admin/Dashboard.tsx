@@ -67,19 +67,25 @@ export default function DashboardAdmin() {
   ];
 
   return (
-    <main className="flex-1 p-6 overflow-y-auto bg-gray-50 min-h-screen">
+    <main className="flex-1 p-4 sm:p-6 overflow-y-auto bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">Welcome Admin 👋</h1>
-        <p className="text-gray-500">
+        <h1 className="text-2xl sm:text-3xl font-bold">Welcome Admin 👋</h1>
+        <p className="text-gray-500 text-sm sm:text-base">
           Here’s what’s happening in your place today
         </p>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
         {stats.map((stat, i) => (
-          <motion.div key={i} whileHover={{ scale: 1.03 }}>
+          <motion.div
+            key={i}
+            whileHover={{ scale: 1.03 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+          >
             <Card
               className={`bg-gradient-to-br ${stat.bg} rounded-2xl shadow-md`}
             >
@@ -92,7 +98,9 @@ export default function DashboardAdmin() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">{stat.value}</div>
+                <div className="text-2xl sm:text-3xl font-bold">
+                  {stat.value}
+                </div>
                 <p
                   className={`text-sm ${
                     stat.change.startsWith("-")
@@ -117,11 +125,11 @@ export default function DashboardAdmin() {
               Recent Orders
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-4 overflow-x-auto">
             {orders.map((order, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between border-b pb-3"
+                className="flex items-center justify-between border-b pb-3 min-w-[280px]"
               >
                 <div>
                   <p className="font-semibold text-gray-800">{order.id}</p>
@@ -158,17 +166,15 @@ export default function DashboardAdmin() {
               Recent Users
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-4 overflow-x-auto">
             {users.map((user, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between border-b pb-3"
+                className="flex items-center justify-between border-b pb-3 min-w-[280px]"
               >
                 <div>
-                  <div>
-                    <p className="font-semibold text-gray-800">{user.name}</p>
-                    <p className="text-sm text-gray-500">{user.email}</p>
-                  </div>
+                  <p className="font-semibold text-gray-800">{user.name}</p>
+                  <p className="text-sm text-gray-500">{user.email}</p>
                 </div>
                 <p className="text-xs text-gray-400">{user.time}</p>
               </div>
