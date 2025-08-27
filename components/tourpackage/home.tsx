@@ -157,6 +157,7 @@ const tours = [
     routeImage: "/routes/dolpa.jpg",
     category: "Adventure",
   },
+  
   {
     title: "Chitwan Jungle Safari",
     location: "Chitwan National Park, Nepal",
@@ -218,6 +219,70 @@ const tours = [
     ],
     image: "/destination/karnali.jpg",
     category: "Trek",
+  },
+
+  {
+    title: "Great Himalaya Trail",
+    location: "Across Nepal",
+    rating: 5.0,
+    difficulty: "Challenging",
+    days: 150,
+    group: "2-8 people",
+    altitude: "6,190m",
+    seasons: "Mar-May, Sep-Nov",
+    routes: [
+      "Eastern GHT Section – 50 Days",
+      "Western GHT Section – 40 Days",
+      "Full GHT Traverse – 150 Days",
+    ],
+    highlights: [
+      "Traverse entire Nepal Himalayas",
+      "Everest, Annapurna & Kanchenjunga views",
+      "Remote high passes & villages",
+      "Ultimate trekking adventure",
+    ],
+    image: "/destination/ght.jpg",
+    category: "Trek",
+  },
+
+  {
+    title: "Bhaktapur Tour",
+    location: "Bhaktapur, Nepal",
+    rating: 4.7,
+    difficulty: "Easy",
+    days: 1,
+    group: "2-20 people",
+    altitude: "1,400m",
+    seasons: "All Year",
+    routes: ["Bhaktapur Heritage Walk – 1 Day"],
+    highlights: [
+      "UNESCO World Heritage city",
+      "Durbar Square & temples",
+      "Newari art, culture & food",
+      "Pottery Square & Nyatapola Temple",
+    ],
+    image: "/destination/bhaktapur.jpg",
+    category: "Cultural Tour",
+  },
+
+  {
+    title: "Patan Tour",
+    location: "Lalitpur, Nepal",
+    rating: 4.6,
+    difficulty: "Easy",
+    days: 1,
+    group: "2-20 people",
+    altitude: "1,350m",
+    seasons: "All Year",
+    routes: ["Patan Heritage Walk – 1 Day"],
+    highlights: [
+      "Patan Durbar Square (UNESCO site)",
+      "Ancient Newari architecture",
+      "Buddhist stupas & courtyards",
+      "Local handicrafts & museum visit",
+    ],
+    image: "/destination/patan.jpg",
+    category: "Cultural Tour",
   },
   {
     title: "Bardiya National Park Safari",

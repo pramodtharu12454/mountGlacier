@@ -185,6 +185,76 @@ const allDestinations: Destination[] = [
       "Trek to the northern base camp of Everest in Tibet, offering stunning views of the world’s highest peak with fewer crowds than the Nepal side.",
   },
   {
+    name: "Great Himalaya Trail",
+    location: "Across Nepal",
+    rating: 5.0,
+    img: "/destination/ght.jpg",
+    category: "Adventure",
+    routes: ["Full GHT Traverse – 150 Days"],
+    shortDesc: "The ultimate trekking adventure across Nepal.",
+    longDesc:
+      "The Great Himalaya Trail is one of the longest and most challenging treks in the world, spanning the entire length of Nepal. It connects remote villages, high passes, and offers views of Everest, Annapurna, Kanchenjunga, and many more peaks.",
+  },
+
+  {
+    name: "Bhaktapur Tour",
+    location: "Bhaktapur, Nepal",
+    rating: 4.7,
+    img: "/destination/bhaktapur.jpg",
+    category: "Tour",
+    routes: ["Bhaktapur Heritage Tour – 1 Day"],
+    shortDesc: "Discover the living museum of Bhaktapur.",
+    longDesc:
+      "Bhaktapur, a UNESCO World Heritage city, is a cultural hub showcasing traditional Newari architecture, temples, and art. Explore Durbar Square, Pottery Square, and taste authentic Newari cuisine on this one-day heritage tour.",
+  },
+
+  {
+    name: "Patan Tour",
+    location: "Lalitpur, Nepal",
+    rating: 4.6,
+    img: "/destination/patan.jpg",
+    category: "Tour",
+    routes: ["Patan Heritage Tour – 1 Day"],
+    shortDesc: "Explore ancient Newari art and culture.",
+    longDesc:
+      "Patan, known as the city of fine arts, is home to ancient temples, stupas, and courtyards. Visit Patan Durbar Square, explore the Patan Museum, and witness Newari handicrafts that reflect centuries of tradition.",
+  },
+  {
+    name: "Kanchenjunga Trek",
+    location: "Taplejung, Nepal",
+    rating: 4.9,
+    img: "/destination/kanchanjunga.jpg",
+    category: "Trek",
+    routes: ["Kanchenjunga Base Camp – 20 Days"],
+    shortDesc: "A remote trek to the world’s third-highest mountain.",
+    longDesc:
+      "The Kanchenjunga Trek offers breathtaking views of Mt. Kanchenjunga (8,586m), the third-highest peak in the world. This challenging adventure passes through remote trails, traditional villages, and high-altitude landscapes for an unforgettable experience.",
+  },
+
+  {
+    name: "Dhaulagiri Trek",
+    location: "Dhaulagiri Region, Nepal",
+    rating: 4.8,
+    img: "/destination/dhaulagiri.jpg",
+    category: "Trek",
+    routes: ["Dhaulagiri Circuit – 16 Days"],
+    shortDesc: "A classic trek around Mt. Dhaulagiri.",
+    longDesc:
+      "The Dhaulagiri Trek takes you around the seventh-highest mountain in the world (8,167m). It passes through remote valleys, glaciers, and cultural villages, offering adventure seekers a demanding but rewarding trekking route.",
+  },
+
+  {
+    name: "Dolpo Trek",
+    location: "Shey Phoksundo, Dolpo, Nepal",
+    rating: 4.7,
+    img: "/destination/dolpa.jpg",
+    category: "Adventure",
+    routes: ["Upper Dolpo – 24 Days", "Lower Dolpo – 14 Days"],
+    shortDesc: "Remote trekking into the hidden valleys of Dolpo.",
+    longDesc:
+      "The Dolpo Trek explores one of Nepal’s most isolated regions, famous for Shey Phoksundo Lake, Tibetan culture, ancient monasteries, and pristine Himalayan valleys. This challenging trek also offers chances to spot rare wildlife like blue sheep and snow leopards.",
+  },
+  {
     name: "Shigatse & Namtso Lake",
     location: "Tibet, China",
     rating: 4.6,

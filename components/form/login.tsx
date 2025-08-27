@@ -1,9 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-export default function LoginForm() {
+export default function LoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // ✅ Check for Admin
+    if (email === "admin@gmail.com" && password === "Admin@123") {
+      router.push("/admin");
+    }
+    // ✅ Any other user goes to user dashboard
+    else if (email && password) {
+      router.push("/dashboard");
+    }
+    // ❌ Empty fields
+    else {
+      setError("Please enter email and password");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 p-6">
       <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
@@ -12,17 +35,23 @@ export default function LoginForm() {
           Login to continue your journey
         </p>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <input
             type="email"
             placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
           />
           <input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
           />
+
+          {error && <p className="text-red-500 text-sm">{error}</p>}
 
           <div className="flex justify-between text-sm text-gray-600">
             <label className="flex items-center space-x-2">
@@ -44,7 +73,10 @@ export default function LoginForm() {
         {/* ✅ Register Link */}
         <p className="text-sm text-center mt-6 text-gray-600">
           Don’t have an account?{" "}
-          <Link href="/register" className="text-blue-600 hover:underline font-medium">
+          <Link
+            href="/register"
+            className="text-blue-600 hover:underline font-medium"
+          >
             Register
           </Link>
         </p>
