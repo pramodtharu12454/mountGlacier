@@ -188,7 +188,7 @@ const allDestinations: Destination[] = [
     name: "Great Himalaya Trail",
     location: "Across Nepal",
     rating: 5.0,
-    img: "/destination/ght.jpg",
+    img: "/destination/GreatHimalaya.webp",
     category: "Adventure",
     routes: ["Full GHT Traverse – 150 Days"],
     shortDesc: "The ultimate trekking adventure across Nepal.",
@@ -253,6 +253,98 @@ const allDestinations: Destination[] = [
     shortDesc: "Remote trekking into the hidden valleys of Dolpo.",
     longDesc:
       "The Dolpo Trek explores one of Nepal’s most isolated regions, famous for Shey Phoksundo Lake, Tibetan culture, ancient monasteries, and pristine Himalayan valleys. This challenging trek also offers chances to spot rare wildlife like blue sheep and snow leopards.",
+  },
+  {
+    name: "Paro Taktsang (Tiger's Nest)",
+    location: "Paro, Bhutan",
+    rating: 4.8,
+    img: "/destination/paro.jpg",
+    category: "Tour",
+    routes: ["Paro Hike – 1 Day"],
+    shortDesc: "Visit Bhutan's most iconic monastery perched on a cliff.",
+    longDesc:
+      "Paro Taktsang, also known as the Tiger's Nest, is a sacred Himalayan monastery clinging to a cliffside. It offers breathtaking views of the Paro Valley and is one of Bhutan's most important spiritual landmarks.",
+  },
+  {
+    name: "Punakha Dzong",
+    location: "Punakha, Bhutan",
+    rating: 4.7,
+    img: "/destination/punakha.jpg",
+    category: "Tour",
+    routes: ["Punakha Tour – 2 Days"],
+    shortDesc: "Explore the majestic fortress at the confluence of two rivers.",
+    longDesc:
+      "Punakha Dzong, also known as the 'Palace of Great Happiness,' is one of Bhutan’s most stunning fortresses. It is located at the meeting point of the Pho Chhu and Mo Chhu rivers and showcases exquisite Bhutanese architecture.",
+  },
+  {
+    name: "Thimphu",
+    location: "Thimphu, Bhutan",
+    rating: 4.6,
+    img: "/destination/thimphu.jpg",
+    category: "Tour",
+    routes: ["Thimphu City Tour – 2 Days"],
+    shortDesc: "Discover the charm of Bhutan's capital city.",
+    longDesc:
+      "Thimphu, Bhutan’s capital, blends modern development with ancient traditions. From the majestic Tashichho Dzong to the bustling weekend markets, Thimphu offers a unique mix of culture, history, and spirituality.",
+  },
+  {
+    name: "Bumthang Valley",
+    location: "Bumthang, Bhutan",
+    rating: 4.7,
+    img: "/destination/bumthang.jpg",
+    category: "Tour",
+    routes: ["Bumthang Exploration – 3 Days"],
+    shortDesc: "Experience the spiritual heartland of Bhutan.",
+    longDesc:
+      "Bumthang Valley is known as the spiritual heart of Bhutan, dotted with ancient monasteries and temples. Surrounded by lush fields and scenic mountains, it is a place of peace, devotion, and natural beauty.",
+  },
+  {
+    name: "Jumolhari Trek",
+    location: "Bhutan",
+    rating: 4.9,
+    img: "/destination/jumolhari.jpg",
+    category: "Trek",
+    routes: ["Jumolhari Trek – 7 Days"],
+    shortDesc:
+      "A classic Bhutanese trek offering stunning views of Mount Jumolhari.",
+    longDesc:
+      "The Jumolhari Trek is one of Bhutan’s most famous trekking routes, taking adventurers through alpine meadows, remote villages, and high mountain passes, with awe-inspiring views of Mount Jumolhari.",
+  },
+  {
+    name: "Laya Gasa Trek",
+    location: "Bhutan",
+    rating: 4.8,
+    img: "/destination/laya.jpg",
+    category: "Trek",
+    routes: ["Laya Gasa Trek – 14 Days"],
+    shortDesc:
+      "An adventurous high-altitude trek through remote villages and pristine valleys.",
+    longDesc:
+      "The Laya Gasa Trek is a challenging journey across Bhutan’s rugged landscapes. It takes you to remote villages, hot springs, and pristine mountain regions, offering an unforgettable cultural and natural experience.",
+  },
+  {
+    name: "Snowman Trek",
+    location: "Bhutan",
+    rating: 5.0,
+    img: "/destination/snowman.jpg",
+    category: "Trek",
+    routes: ["Snowman Trek – 25 Days"],
+    shortDesc:
+      "One of the world's most challenging treks, crossing high passes with breathtaking views.",
+    longDesc:
+      "The Snowman Trek is Bhutan’s ultimate adventure, often considered one of the hardest treks in the world. It crosses multiple high passes above 5,000 meters, showcasing untouched landscapes and secluded Himalayan villages.",
+  },
+  {
+    name: "Chele La Trek",
+    location: "Paro, Bhutan",
+    rating: 4.5,
+    img: "/destination/chelela.jpg",
+    category: "Trek",
+    routes: ["Chele La Trek – 2 Days"],
+    shortDesc:
+      "A shorter, scenic trek offering panoramic views of the Himalayas.",
+    longDesc:
+      "The Chele La Trek is a relatively short but rewarding hike near Paro. It provides sweeping views of the Himalayan range, alpine meadows, and colorful wildflowers, making it ideal for those seeking a moderate adventure.",
   },
   {
     name: "Shigatse & Namtso Lake",

@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Admin/sidebar";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
           <main className="flex-1 ml-64 p-6 overflow-y-auto">{children}</main>
         </div>
       </body>
+     
     </html>
   );
 }

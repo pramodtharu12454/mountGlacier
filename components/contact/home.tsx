@@ -106,13 +106,13 @@ export default function ContactSection() {
                 <MessageCircle size={18} /> WhatsApp
               </a>
               <a
-                href="viber://chat?number=9779851411452"
+                href="viber://chat?number=%2B9779851411452"
                 className="flex items-center gap-2 bg-purple-600 text-white px-3 py-2 rounded-md hover:bg-purple-700 transition"
               >
                 <PhoneCall size={18} /> Viber
               </a>
               <a
-                href=" we://chat?number=9779851411452"
+                href="weixin://dl/chat?username=9779851411452"
                 className="flex items-center gap-2 bg-sky-500 text-white px-3 py-2 rounded-md hover:bg-sky-600 transition"
               >
                 <Smartphone size={18} /> WeChat

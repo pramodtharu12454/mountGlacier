@@ -42,7 +42,7 @@ export default function Header() {
       href: "/package",
       subItems: [
         { label: "Nepal", href: "/package" },
-        { label: "Bhutan", href: "/package/bhutan" },
+        { label: "Bhutan", href: "/bhutan" },
         { label: "China", href: "/china" },
       ],
     },

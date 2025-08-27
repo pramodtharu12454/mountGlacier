@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { User } from "lucide-react"; // user icon
 
 export default function Sidebar() {
   const menus = [
@@ -21,10 +22,10 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="flex items-center mb-6">
         <Image
-          src="/logo1.png" // replace with your logo path
+          src="/logo1.png"
           alt="Store Logo"
-          width={150}
-          height={40}
+          width={200}
+          height={60}
           className="mr-2"
         />
       </div>
@@ -46,6 +47,19 @@ export default function Sidebar() {
           );
         })}
       </nav>
+
+      {/* User Dashboard Icon at Bottom */}
+      <div className="mt-4">
+        <Link href="/">
+          <Button
+            variant={pathname.startsWith("/user") ? "default" : "ghost"}
+            className="w-full justify-start"
+          >
+            <User className="h-5 w-5 mr-2" />
+            User Dashboard
+          </Button>
+        </Link>
+      </div>
     </aside>
   );
 }
